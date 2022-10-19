@@ -12,9 +12,7 @@ public class vendorDAO {
         try {
 
 
-            Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
-                    "postgres", "pass123");
+
             Statement stmt = con.createStatement();
             String sql = "Select *from " + TABLE_NAME;
 

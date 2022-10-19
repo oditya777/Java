@@ -6,15 +6,15 @@ import java.sql.Statement;
 
 public class CustomerDAO {
     public static final String TABLE_NAME = "app_customer";
-
-
+private  DAOService daoService ;
+public CustomerDAO(){
+    daoService = new DAOService();
+}
     public void createTable() {
         try {
 
 
-            Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
-                    "postgres", "pass123");
+          connection con = daoService.getconnection();
             Statement stmt = con.createStatement();
             String sql = "Select *from " + TABLE_NAME;
 
