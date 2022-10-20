@@ -11,6 +11,15 @@ public class Customer {
         this.phone = phone;
     }
 
+    public long getCustomerID() {
+        return CustomerID;
+    }
+
+    public void setCustomerID(long customerID) {
+        CustomerID = customerID;
+    }
+
+    private  long CustomerID;
     private long phone;
     private String name;
     private String addredd;

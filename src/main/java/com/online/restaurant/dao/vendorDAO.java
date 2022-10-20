@@ -7,32 +7,33 @@ import java.sql.Statement;
 public class vendorDAO {
     public static final String TABLE_NAME = "app_vendor";
 
+    private DAOService daoService;
+
+    public vendorDAO() {
+        // Inside Constructor
+        daoService = new DAOService();
+    }
 
     public void createTable() {
         try {
-
-
+            Connection con = daoService.getConnection();
 
             Statement stmt = con.createStatement();
-            String sql = "Select *from " + TABLE_NAME;
 
             String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME
-                    + " ( id bigint NOT NULL,"
-                    + "name text,"
-                    + "rating decimal ,"
-                    + "address text,"
-                    + "pure_veg bool,"
-                    + "phone bigint,"
-                    + "state text,"
-                    + "category text,"
-                    + "email text,"
-                    + "CONSTRAINT app_vendor_pk PRIMARY KEY (id))";
-            System.out.println("create table query " + query);
+                    + " ( id bigint NOT NULL, "
+                    + " name text ,"
+                    + " address text, "
+                    + " phone_number bigint, "
+                    + " city text , "
+                    + " state text, "
+                    + " email_id text, "
+                    + " category text, "
+                    + " CONSTRAINT app_vendor_pk PRIMARY KEY (id))";
+            System.out.println("Create Table Query : " + query);
             stmt.executeUpdate(query);
-
-        } catch (Exception ex) {
+        }catch (Exception ex){
             ex.printStackTrace();
         }
     }
 }
-

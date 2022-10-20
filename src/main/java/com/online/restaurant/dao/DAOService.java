@@ -5,16 +5,18 @@ import java.sql.DriverManager;
 
 public class DAOService {
 
-    public Connection getconnection(){
+    public Connection getConnection(){
         try{
+            // 1. Load JDBC Driver
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
-                    "postgres", "pass123");
+            // 2. Establish Connection with your local database
+            Connection con = DriverManager
+                    .getConnection("jdbc:postgresql://localhost:5432/postgres",
+                            "postgres", "postgres");
             return con;
-
-        }catch (Exception ex)
-        {
+        }catch (Exception ex){
             ex.printStackTrace();
-        } return null;
+        }
+        return null;
     }
 }
